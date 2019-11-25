@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.1
+* Fix for issue 10301 : Fix the SAS Token date format
+
 ## Version 1.4.0
 * Fixed miscellaneous typos across module
 * Fix for issue #9658 : Typo VirtualNteworkRule parameter in Set-AzEventHubNetworkRuleSet
