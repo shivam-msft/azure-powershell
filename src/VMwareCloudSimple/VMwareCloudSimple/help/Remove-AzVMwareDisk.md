@@ -5,45 +5,37 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzVMwareVM
+# Remove-AzVMwareDisk
 
 ## SYNOPSIS
-Get the properties of a VMware virtual machine.
+Removes a disk from a VMware VM.
 
 ## SYNTAX
 
-### ListBySubscriptionParameterSet (Default)
+### RemoveByVmNameParameterSet (Default)
 ```
-Get-AzVMwareVM [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ListByResourceGroupParameterSet
-```
-Get-AzVMwareVM [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetByNameParameterSet
-```
-Get-AzVMwareVM -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+Remove-AzVMwareDisk -ResourceGroupName <String> -VMName <String>
+ -Name <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### GetByResourceIdParameterSet
+### RemoveByVmResourceIdParameterSet
 ```
-Get-AzVMwareVM -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzVMwareDisk -VMResourceId <String> -Name <System.Collections.Generic.List`1[System.String]>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzVMwareVM cmdlet gets the properties of a VMware VM.
+The Remove-AzVMwareDisk cmdlet removes a disk from a VMware VM.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzVmwareVm -ResourceGroupName MyResourceGroup
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-List details of VMware VMs in a particular resource group.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -63,17 +55,17 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the virtual machine.
+List of names of the disks you want to remove.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -82,19 +74,7 @@ Name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByResourceGroupParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: RemoveByVmNameParameterSet
 Aliases:
 
 Required: True
@@ -104,12 +84,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceId
+### -VMName
+Name of the virtual machine.
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveByVmNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VMResourceId
 Resource Id of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceIdParameterSet
+Parameter Sets: RemoveByVmResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -125,9 +120,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.VMwareCloudSimple.Models.PSVirtualMachine
+
 ## NOTES
 
 ## RELATED LINKS

@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.VMwareCloudSimple.Common
         public VMwareCloudSimpleManagementClientWrapper(IAzureContext context)
             : this(AzureSession.Instance.ClientFactory.CreateArmClient<VMwareCloudSimpleClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
+            VMwareCloudSimpleClient.Referer = "management.azure.com";
         }
 
         public VMwareCloudSimpleManagementClientWrapper(IVMwareCloudSimpleClient resourceManagementClient)

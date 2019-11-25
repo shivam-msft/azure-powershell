@@ -33,10 +33,10 @@ namespace Microsoft.Azure.Commands.VMwareCloudSimple.Models
         public int AmountOfRam { get; set; }
 
         // Gets or sets the property of 'Controllers'
-        public IList<VirtualDiskController> Controllers { get; private set; }
+        public IList<PSVirtualDiskController> Controllers { get; private set; }
 
         // Gets or sets the property of 'Disks'
-        public IList<VirtualDisk> Disks { get; set; }
+        public IList<PSVirtualDisk> Disks { get; set; }
 
         // Gets or sets the property of 'Dnsname'
         public string Dnsname { get; private set; }
@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Commands.VMwareCloudSimple.Models
         public string GuestOS { get; private set; }
 
         // Gets or sets the property of 'GuestOSType'
-        public GuestOSType GuestOSType { get; private set; }
+        public PSGuestOSType GuestOSType { get; private set; }
 
         // Gets or sets the property of 'Nics'
-        public IList<VirtualNic> Nics { get; set; }
+        public IList<PSVirtualNic> Nics { get; set; }
 
         // Gets or sets the property of 'NumberOfCores'
         public int NumberOfCores { get; set; }
@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Commands.VMwareCloudSimple.Models
         public string PublicIP { get; private set; }
 
         // Gets or sets the property of 'ResourcePool'
-        public ResourcePool ResourcePool { get; set; }
+        public PSResourcePool ResourcePool { get; set; }
 
         // Gets or sets the property of 'Status'
-        public VirtualMachineStatus? Status { get; private set; }
+        public PSVirtualMachineStatus? Status { get; private set; }
 
         // Gets or sets the property of 'TemplateId'
         public string TemplateId { get; set; }

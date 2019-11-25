@@ -23,14 +23,15 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.VMwareCloudSimple
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmwareVm", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSVirtualMachine))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMwareVM", DefaultParameterSetName = ListBySubscriptionParameterSet), OutputType(typeof(PSVirtualMachine))]
     public class GetVirtualMachineCommand : VMwareCloudSimpleBaseCmdlet
     {
-        private const string ListParameterSet = "ListParameterSet";
+        private const string ListBySubscriptionParameterSet = "ListBySubscriptionParameterSet";
+        private const string ListByResourceGroupParameterSet = "ListByResourceGroupParameterSet";
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
 
-        [Parameter(Mandatory = false, ParameterSetName = ListParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the resource group.")]
+        [Parameter(Mandatory = false, ParameterSetName = ListByResourceGroupParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the resource group.")]
         [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -64,9 +65,15 @@ namespace Microsoft.Azure.Commands.VMwareCloudSimple
                         WriteObject(result.ToPSVirtualMachine());
                         break;
                     }
-                case ListParameterSet:
+                case ListByResourceGroupParameterSet:
                     {
                         var result = this.VMwareCloudSimpleClient.VirtualMachines.ListByResourceGroup(this.ResourceGroupName).Select(p => p.ToPSVirtualMachine());
+                        WriteObject(result);
+                        break;
+                    }
+                case ListBySubscriptionParameterSet:
+                    {
+                        var result = this.VMwareCloudSimpleClient.VirtualMachines.ListBySubscription().Select(p => p.ToPSVirtualMachine());
                         WriteObject(result);
                         break;
                     }
